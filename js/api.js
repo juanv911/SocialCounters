@@ -1,5 +1,5 @@
 (function($) {
-  $.fn.apis = function(options) {
+  $.fn.SocialCounter = function(options) {
     var settings = $.extend({
       // These are the defaults.
       twitter_user:'',
@@ -199,7 +199,7 @@
       //http://stackoverflow.com/questions/17409227/follower-count-number-in-twitter
       //https://github.com/J7mbo/twitter-api-php
       $.ajax({
-        url: '../apis/twitter/index.php',
+        url: '../SocialCounter/twitter/index.php',
         dataType: 'json',
         type: 'GET',
         data:{
@@ -249,7 +249,7 @@
     function vine(){
       //Vine API requires PHP. PHP code is included at the bottom of the page
       $.ajax({
-        url: '../apis/vine/vine.php',
+        url: '../SocialCounter/vine/vine.php',
         dataType: 'json',
         type: 'GET',
         data:{
