@@ -67,15 +67,15 @@
       //https://neosmart-stream.de/facebook/how-to-create-a-facebook-access-token/
       //https://smashballoon.com/custom-facebook-feed/access-token/
       $.ajax({
-        url: 'https://graph.facebook.com/'+settings.facebook_user,
+        url: 'https://graph.facebook.com/v2.8/'+settings.facebook_user,
         dataType: 'json',
         type: 'GET',
         data: {
           access_token:settings.facebook_token,
-          fields:'likes'
+          fields:'fan_count'
         },
         success: function(data) {   
-          var followers = parseInt(data.likes);
+          var followers = parseInt(data.fan_count);
           var k = kFormatter(followers);
           $('#wrapper .facebook .count').append(k); 
           $('#wrapper .item.facebook').attr('href','https://facebook.com/'+settings.facebook_user);
