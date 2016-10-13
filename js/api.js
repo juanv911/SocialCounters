@@ -67,15 +67,15 @@
       //https://neosmart-stream.de/facebook/how-to-create-a-facebook-access-token/
       //https://smashballoon.com/custom-facebook-feed/access-token/
       $.ajax({
-        url: 'https://graph.facebook.com/'+settings.facebook_user,
+        url: 'https://graph.facebook.com/v2.8/'+settings.facebook_user,
         dataType: 'json',
         type: 'GET',
         data: {
           access_token:settings.facebook_token,
-          fields:'likes'
+          fields:'fan_count'
         },
         success: function(data) {   
-          var followers = parseInt(data.likes);
+          var followers = parseInt(data.fan_count);
           var k = kFormatter(followers);
           $('#wrapper .facebook .count').append(k); 
           $('#wrapper .item.facebook').attr('href','https://facebook.com/'+settings.facebook_user);
@@ -91,32 +91,18 @@
       //http://dmolsen.com/2013/04/05/generating-access-tokens-for-instagram
       //http://ka.lpe.sh/2015/12/24/this-request-requires-scope-public_content-but-this-access-token-is-not-authorized-with-this-scope/
       $.ajax({
-        url: 'https://api.instagram.com/v1/users/search?q='+settings.instagram_user+'',
+        url: 'https://api.instagram.com/v1/users/self/',
         dataType: 'jsonp',
         type: 'GET',
         data: {
           access_token: settings.instagram_token
         },
         success: function(data) {
-          $.each(data.data, function(i, item) {
-            if(settings.instagram_user == item.username){
-              $.ajax({
-                url: "https://api.instagram.com/v1/users/" + item.id,
-                dataType: 'jsonp',          
-                type: 'GET',
-                data: {
-                  access_token: settings.instagram_token
-                },
-                success: function(data) {
-                  var followers = parseInt(data.data.counts.followed_by);
-                  var k = kFormatter(followers);
-                  $('#wrapper .instagram .count').append(k);
-                  $('#wrapper .item.instagram').attr('href','https://instagram.com/'+settings.instagram_user);
-                  getTotal(followers); 
-                }
-              });
-            } 
-          });
+          var followers = parseInt(data.data.counts.followed_by);
+          var k = kFormatter(followers);
+          $('#wrapper .instagram .count').append(k);
+          $('#wrapper .item.instagram').attr('href','https://instagram.com/'+settings.instagram_user);
+          getTotal(followers); 
         }
       });
     }
@@ -199,7 +185,7 @@
       //http://stackoverflow.com/questions/17409227/follower-count-number-in-twitter
       //https://github.com/J7mbo/twitter-api-php
       $.ajax({
-        url: '../SocialCounter/twitter/index.php',
+        url: '../SocialCounters/twitter/index.php',
         dataType: 'json',
         type: 'GET',
         data:{
@@ -249,7 +235,7 @@
     function vine(){
       //Vine API requires PHP. PHP code is included at the bottom of the page
       $.ajax({
-        url: '../SocialCounter/vine/vine.php',
+        url: '../SocialCounters /vine/vine.php',
         dataType: 'json',
         type: 'GET',
         data:{
