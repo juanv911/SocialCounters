@@ -58,3 +58,30 @@ a {
 #wrapper .item {
   color:#fff; 
 }
+#wrapper.rounded {
+  margin-top:20px;
+}
+#wrapper.rounded .item {
+  min-width:0;
+  min-height:0;
+  width:50px;
+  height:50px;
+  position:relative;
+  margin-right:20px;
+  margin-bottom:20px;
+  border-radius:50%;
+  border:none;
+}
+#wrapper.rounded .item .count{ 
+  position:absolute;
+  top:-10px;
+  right:-10px;
+  background:inherit;
+  border:solid 2px #fff;
+  border-radius:30px;
+  height:15px;
+  line-height:15px;
+}
+#wrapper.rounded .item .count{
+  font-size:11px!important;
+}
