@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size:13px;
   background:#f5f5f5;
+  margin:0px;
 }
 a {
   text-decoration:none;
@@ -9,6 +10,7 @@ a {
 #wrapper {
   color:white;
   background-color: #f9f9f9;
+  margin:10px;
 }
 #wrapper .item{
   padding:12px;
@@ -58,6 +60,7 @@ a {
 #wrapper .item {
   color:#fff; 
 }
+/*Rounded Counters*/
 #wrapper.rounded {
   margin-top:20px;
 }
@@ -84,4 +87,21 @@ a {
 }
 #wrapper.rounded .item .count{
   font-size:11px!important;
+}
+/*Square Counters*/
+#wrapper.square {
+  max-width:720px;
+  margin: 0 auto;
+}
+#wrapper.square .item {
+  width:120px;
+  height:130px;
+  border-radius:0px;
+  margin:0px;
+}
+#wrapper.square .item .count{ 
+  padding: 10px;
+  display:block;
+  font-size:20px;
+  font-weight:600; 
 }
