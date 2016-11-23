@@ -8,7 +8,7 @@ Display social media counters. Twitter followers, Facebook likes, Instagram Foll
 * In the index.html, place your username and tokens inside the single quotes and it should work.
 
 #How To Use
-* Use the example html file provided to display your social media stats. Make sure that there is an html tag with a class belonging to a particular counter. The example belong only fetches information about soundcloud, you can add up to 15 counters. In the example file, all html classes are provided, so you can just plugin your username and token, you can also remove counters. Every counter has to have its own html class such as facebook, twitter, instagram, etc...
+* Use the example html file provided to display your social media stats. Make sure that there is an html tag with a class belonging to a particular counter. The example below only fetches information about soundcloud, you can add up to 15 counters. In the example file, all html classes are provided, so you can just plugin your username and token, you can also remove counters. Every counter has to have its own html class such as facebook, twitter, instagram, etc...
 <pre>
 <code>
 $('#wrapper').SocialCounter({
@@ -19,7 +19,7 @@ $('#wrapper').SocialCounter({
 </pre>
 
 
-* For this particular counter, the soundclass class must be included, otherwise it will not display anything.
+* For this particular counter, the soundcloud class must be included, otherwise it will not display anything.
 
 &lt;a class="item soundcloud"></a&gt;
 
