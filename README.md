@@ -1,5 +1,10 @@
 # SocialCounters
 Display social media counters. Twitter followers, Facebook likes, Instagram Followers, Google Plus Followers, LinkedIn connection, YouTube subcribers, Vine followers, Pinterest followers, Dribbble followers, SoundCloud followers, Vimeo followers, GitHub followers, Behance followers, VK followers, Foursquare friends.
+##Limits
+* Some of these API have limits on the amount of requests per hour your access token can make.
+* These API sometimes update their parameters or endpoints. When that happens the code might not work and might need to be updated. If that happens submit an issue here on GitHub and I will try fix any issues.
+* If too many request are made at the same time with my access tokens in my demos, you might hit a limit and wait for the new request to be available. Try to create your own access tokens to prevent hitting a limit.
+
 ##Instructions
 * The Twitter and Vine counters require PHP to work, all other counters only require jQuery. 
 * Due to the update to the Instagram API after June 1, 2016 you can only access your own photos and profile information using the access token you create.
