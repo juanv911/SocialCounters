@@ -33,3 +33,5 @@ $('#wrapper').SocialCounter({
 * http://codepen.io/juanv911/pen/ozPoaB
 * http://codepen.io/juanv911/pen/oYgbjb
 
+##Credits
+<a href="https://github.com/j7mbo/twitter-api-php">twitter-api-php</a>
