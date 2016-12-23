@@ -9,7 +9,6 @@ a {
 }
 #wrapper {
   color:white;
-  background-color: #f9f9f9;
   margin:10px;
 }
 #wrapper .item{
@@ -49,7 +48,8 @@ a {
   font-weight:600; 
 }
 #total, #total_k {
-  padding: 10px;
+  color:initial;
+  padding: 10px 0;
   font-weight:bold;
   font-size:20px;
 }
