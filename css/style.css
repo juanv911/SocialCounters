@@ -27,7 +27,7 @@ a {
 }
 #wrapper .item.dribbble{ background:#ea4c89;}
 #wrapper .item.facebook{ background:#3a5795;}
-#wrapper .item.instagram{ background:#517fa4;}
+#wrapper .item.instagram,#wrapper .item.instagram_sandbox{ background:#517fa4;}
 #wrapper .item.google{ background:#dd4b39;}
 #wrapper .item.youtube{ background:#b31217;}
 #wrapper .item.pinterest { background:#cb2027;}
@@ -90,7 +90,7 @@ a {
 }
 /*Square Counters*/
 #wrapper.square {
-  max-width:720px;
+  max-width:620px;
   margin: 0 auto;
 }
 #wrapper.square .item {

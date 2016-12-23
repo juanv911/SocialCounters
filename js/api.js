@@ -6,6 +6,7 @@
       facebook_user:'',
       facebook_token:'',
       instagram_user:'',
+      instagram_user_sandbox:'',
       instagram_token:'',
       google_plus_id:'',
       google_plus_key:'',
@@ -105,6 +106,37 @@
         }
       });
     }
+    function instagram_sandbox(){
+       $.ajax({
+         url: 'https://api.instagram.com/v1/users/search?q='+settings.instagram_user_sandbox,
+         dataType: 'jsonp',
+         type: 'GET',
+         data: {
+           access_token: settings.instagram_token
+         },
+         success: function(data) {
+           $.each(data.data, function(i, item) {
+             if(settings.instagram_user_sandbox == item.username){
+               $.ajax({
+                 url: "https://api.instagram.com/v1/users/" + item.id,
+                 dataType: 'jsonp',          
+                 type: 'GET',
+                 data: {
+                   access_token: settings.instagram_token
+                 },
+                 success: function(data) {
+                   var followers = parseInt(data.data.counts.followed_by);
+                   var k = kFormatter(followers);
+                   $('#wrapper .instagram_sandbox .count').append(k);
+                   $('#wrapper .item.instagram_sandbox').attr('href','https://instagram.com/'+settings.instagram_user_sandbox);
+                   getTotal(followers); 
+                 }
+               });
+             } 
+           });
+         }
+       });
+     }
     function google(){
       //Google+ API
       $.ajax({
@@ -232,9 +264,8 @@
       }); 
     }
     function vine(){
-      //Vine API requires PHP. PHP code is included at the bottom of the page
       $.ajax({
-        url: '../SocialCounters /vine/vine.php',
+        url: '../SocialCounters/vine/vine.php',
         dataType: 'json',
         type: 'GET',
         data:{
@@ -350,7 +381,9 @@
       facebook(); 
     } if(settings.instagram_user!='' && settings.instagram_token!=''){ 
       instagram();
-    } if(settings.google_plus_id!='' && settings.google_plus_key!=''){ 
+    } if(settings.instagram_user_sandbox!='' && settings.instagram_token!=''){ 
+      instagram_sandbox();
+    }if(settings.google_plus_id!='' && settings.google_plus_key!=''){ 
       google();
     } if(settings.linkedin_oauth!=''){ 
       linkedin(); 
