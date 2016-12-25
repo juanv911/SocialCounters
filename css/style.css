@@ -38,6 +38,7 @@ a {
 #wrapper .item.vk {background: #507299;}
 #wrapper .item.foursquare {background: #2d5be3;}
 #wrapper .item.linkedin {background: #0077b5;}
+#wrapper .item.tumblr {background: #36465d;}
 
 #wrapper .item i,#wrapper .item .count { 
   padding: 10px;
@@ -49,7 +50,7 @@ a {
 }
 #total, #total_k {
   color:initial;
-  padding: 10px 0;
+  padding: 10px;
   font-weight:bold;
   font-size:20px;
 }

@@ -26,7 +26,8 @@
       behance_client_id:'',
       vk_id:'',
       foursquare_user:'',
-      foursquare_token:''
+      foursquare_token:'',
+      tumblr_username:''
     }, options);
 
     function pinterest(){
@@ -350,6 +351,23 @@
         }
       });
     }
+    function tumblr(){
+      $.ajax({
+        url: '../SocialCounters/tumblr/callback.php',
+        dataType: 'json',
+        type: 'GET',
+        data:{
+          user: settings.tumblr_username
+        },
+        success: function(data) {
+          var followers = parseInt(data.followers);
+          var k = kFormatter(followers);
+          $('#wrapper .item.tumblr .count').append(k); 
+          $('#wrapper .item.tumblr').attr('href','https://'+settings.tumblr_username+'.tumblr.com');
+          getTotal(followers); 
+        } 
+      });
+    }
     //Function to add commas to the thousandths
     $.fn.digits = function(){ 
       return this.each(function(){ 
@@ -407,6 +425,8 @@
       vk(); 
     } if(settings.foursquare_user!='' && settings.foursquare_token!=''){ 
       foursquare(); 
+    } if(settings.tumblr_username!=''){ 
+      tumblr(); 
     }
   };
 }(jQuery));
