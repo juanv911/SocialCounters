@@ -382,7 +382,7 @@
           var followers = parseInt(data.followers);
           var k = kFormatter(followers);
           $('#wrapper .item.twitch .count').append(k); 
-          $('#wrapper .item.twitch').attr('https://www.twitch.tv/'+settings.twitch_username+'/profile');
+          $('#wrapper .item.twitch').attr('href','https://www.twitch.tv/'+settings.twitch_username+'/profile');
           getTotal(followers); 
         } 
       });
