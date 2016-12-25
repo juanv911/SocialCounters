@@ -1,5 +1,23 @@
 # SocialCounters
-Display social media counters. Twitter followers, Facebook likes, Instagram Followers, Google Plus Followers, LinkedIn connection, YouTube subcribers, Vine followers, Pinterest followers, Dribbble followers, SoundCloud followers, Vimeo followers, GitHub followers, Behance followers, VK followers, Foursquare friends.
+* Display social media counters. 
+* Twitter Followers
+* Facebook Likes
+* Instagram Followers 
+* Google Plus Followers 
+* LinkedIn Connections
+* YouTube Subcribers
+* Vine Followers
+* Pinterest Followers
+* Dribbble Followers
+* SoundCloud Followers
+* Vimeo Followers
+* GitHub Followers
+* Behance Followers
+* VK Followers
+* Foursquare Friends
+* Tumblr Blog Followers
+* Twitch Channel Followers
+
 ## Limits
 * Some of these API have limits on the amount of requests per hour your access token can make.
 * These API sometimes update their parameters or endpoints. When that happens the code might not work and might need to be updated. If that happens submit an issue here on GitHub and I will try fix any issues.
