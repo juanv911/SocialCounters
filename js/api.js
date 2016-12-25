@@ -27,7 +27,9 @@
       vk_id:'',
       foursquare_user:'',
       foursquare_token:'',
-      tumblr_username:''
+      tumblr_username:'',
+      twitch_username:'',
+      twitch_client_id:''
     }, options);
 
     function pinterest(){
@@ -368,6 +370,23 @@
         } 
       });
     }
+    function twitch(){
+      $.ajax({
+        url: 'https://api.twitch.tv/kraken/channels/'+settings.twitch_username,
+        dataType: 'json',
+        type: 'GET',
+        data:{
+          client_id: settings.twitch_client_id
+        },
+        success: function(data) {
+          var followers = parseInt(data.followers);
+          var k = kFormatter(followers);
+          $('#wrapper .item.twitch .count').append(k); 
+          $('#wrapper .item.twitch').attr('https://www.twitch.tv/'+settings.twitch_username+'/profile');
+          getTotal(followers); 
+        } 
+      });
+    }
     //Function to add commas to the thousandths
     $.fn.digits = function(){ 
       return this.each(function(){ 
@@ -427,6 +446,8 @@
       foursquare(); 
     } if(settings.tumblr_username!=''){ 
       tumblr(); 
+    } if(settings.twitch_username!='' && settings.twitch_client_id!=''){ 
+      twitch(); 
     }
   };
 }(jQuery));

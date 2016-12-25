@@ -39,6 +39,7 @@ a {
 #wrapper .item.foursquare {background: #2d5be3;}
 #wrapper .item.linkedin {background: #0077b5;}
 #wrapper .item.tumblr {background: #36465d;}
+#wrapper .item.twitch {background: #7d5bbe;}
 
 #wrapper .item i,#wrapper .item .count { 
   padding: 10px;
