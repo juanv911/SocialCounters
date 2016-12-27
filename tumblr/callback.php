@@ -4,7 +4,7 @@ header('Content-type: application/json');
 
 include ("lib/tumblrPHP.php");
 
-// Check if parameter is sent
+// Check if username parameter is sent
 if(isset($_GET['user']) && $_GET['user'] != ''){
     // Tumblr Username
     $username = $_GET['user'];
@@ -20,8 +20,7 @@ if(isset($_GET['user']) && $_GET['user'] != ''){
     // Grab the followers by using the oauth_get method.
     $followers = $tumblr->oauth_get("/blog/".$username.".tumblr.com/followers");
     
-    // Encode JSON Response
-    $json = json_encode($followers,true);
+    // Retrieve number of followers
     $data = array('followers'=>$followers->response->total_users);
 
     // Print JSON Response
