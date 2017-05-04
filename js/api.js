@@ -12,6 +12,7 @@
       google_plus_key:'',
       linkedin_oauth:'',
       youtube_user:'',
+      youtube_user_square:'',
       youtube_key:'',
       vine_user:'',
       pinterest_user:'',
@@ -29,7 +30,9 @@
       foursquare_token:'',
       tumblr_username:'',
       twitch_username:'',
-      twitch_client_id:''
+      twitch_client_id:'',
+      spotify_artist_id:'',
+      spotify_user_id:''
     }, options);
 
     function pinterest(){
@@ -88,11 +91,6 @@
       }); 
     }
     function instagram(){
-      //Create access tokens
-      //https://www.youtube.com/watch?v=LkuJtIcXR68
-      //http://instagram.pixelunion.net
-      //http://dmolsen.com/2013/04/05/generating-access-tokens-for-instagram
-      //http://ka.lpe.sh/2015/12/24/this-request-requires-scope-public_content-but-this-access-token-is-not-authorized-with-this-scope/
       $.ajax({
         url: 'https://api.instagram.com/v1/users/self/',
         dataType: 'jsonp',
@@ -159,7 +157,6 @@
       });
     }
     function youtube(){
-      //YouTube API V3
       $.ajax({
         url: 'https://www.googleapis.com/youtube/v3/channels',
         dataType: 'jsonp',
@@ -174,6 +171,25 @@
           var k = kFormatter(subscribers);
           $('#wrapper .item.youtube .count').append(k); 
           $('#wrapper .item.youtube').attr('href','https://youtube.com/'+settings.youtube_user);
+          getTotal(subscribers); 
+        } 
+      }); 
+    }
+    function youtubeSquare(){
+      $.ajax({
+        url: 'https://www.googleapis.com/youtube/v3/channels',
+        dataType: 'jsonp',
+        type: 'GET',
+        data:{
+          part:'statistics',
+          forUsername:settings.youtube_user_square,
+          key: settings.youtube_key
+        },
+        success: function(data) {   
+          var subscribers = parseInt(data.items[0].statistics.subscriberCount);
+          var k = kFormatter(subscribers);
+          $('#wrapper .item.youtube_square .count').append(k); 
+          $('#wrapper .item.youtube_square').attr('href','https://youtube.com/'+settings.youtube_user_square);
           getTotal(subscribers); 
         } 
       }); 
@@ -214,10 +230,6 @@
       }); 
     }
     function twitter(){
-      //Twitter API - Requires PHP.
-      //References
-      //http://stackoverflow.com/questions/17409227/follower-count-number-in-twitter
-      //https://github.com/J7mbo/twitter-api-php
       $.ajax({
         url: '../SocialCounters/twitter/index.php',
         dataType: 'json',
@@ -387,6 +399,34 @@
         } 
       });
     }
+    function spotifyArtist(){
+        $.ajax({
+            url:'https://api.spotify.com/v1/artists/'+settings.spotify_artist_id,
+            dataType:'json',
+            type:'GET',
+            success: function(data){
+              var followers = parseInt(data.followers.total);
+              var k = mFormatter(followers);
+              $('#wrapper .item.spotify_artist .count').append(k); 
+              $('#wrapper .item.spotify_artist').attr('href','https://open.spotify.com/artist/'+settings.spotify_artist_id);
+              getTotal(followers);    
+            }
+        });
+    }
+    function spotifyUser(){
+        $.ajax({
+            url:'https://api.spotify.com/v1/users/'+settings.spotify_user_id,
+            dataType:'json',
+            type:'GET',
+            success: function(data){
+              var followers = parseInt(data.followers.total);
+              var k = mFormatter(followers);
+              $('#wrapper .item.spotify_user .count').append(k); 
+              $('#wrapper .item.spotify_user').attr('href','https://open.spotify.com/users/'+settings.spotify_user_id);
+              getTotal(followers);    
+            }
+        });
+    }
     //Function to add commas to the thousandths
     $.fn.digits = function(){ 
       return this.each(function(){ 
@@ -396,6 +436,10 @@
     //Function to add K to thousands
     function kFormatter(num) {
       return num > 999 ? (num/1000).toFixed(1) + 'k' : num;
+    }
+    //Function to add K to thousands
+    function mFormatter(num) {
+      return num > 999999 ? (num/1000000).toFixed(1) + 'm' : num;
     }
     //Total Counter
     var total = 0;
@@ -426,6 +470,8 @@
       linkedin(); 
     } if(settings.youtube_user!='' && settings.youtube_key!=''){ 
       youtube(); 
+    } if(settings.youtube_user_square!='' && settings.youtube_key!=''){ 
+      youtubeSquare(); 
     } if(settings.vine_user!=''){ 
       vine(); 
     } if(settings.pinterest_user!=''){ 
@@ -448,6 +494,10 @@
       tumblr(); 
     } if(settings.twitch_username!='' && settings.twitch_client_id!=''){ 
       twitch(); 
+    } if(settings.spotify_artist_id!=''){ 
+      spotifyArtist(); 
+    }if(settings.spotify_user_id!=''){ 
+      spotifyUser(); 
     }
   };
 }(jQuery));
